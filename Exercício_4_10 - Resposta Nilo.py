@@ -14,25 +14,25 @@
 # Industrial    Até 5000        R$ 0,55
 #               Acima de 5000   R$ 0,60
 
-kilowatts_hora = int(input("Informe o consumo de kWh: "))
-tipo_instalação = input("Informe o tipo de instação. (Ex.: R para residências, I para indústrias e C para comércios.): ")
-
-if tipo_instalação == 'R':
-    if kilowatts_hora <= 500:
-        valor_fatura = kilowatts_hora * 0.40
+consumo = int(input("Consumo em kWh: "))
+tipo = input("Tipo da instalação (R, C ou I): ")
+if tipo == "R":
+    if consumo <= 500:
+        preço = 0.40
     else:
-        valor_fatura = kilowatts_hora * 0.65
-elif tipo_instalação == 'C':
-    if kilowatts_hora <= 1000:
-        valor_fatura = kilowatts_hora * 0.55
+        preço = 0.65
+elif tipo == "I":
+    if consumo <= 5000:
+        preço = 0.55
     else:
-        valor_fatura = kilowatts_hora * 0.60
-elif tipo_instalação =='I':
-    if kilowatts_hora <= 5000:
-        valor_fatura = kilowatts_hora * 0.55
+        preço = 0.60
+elif tipo == "C":
+    if consumo <= 1000:
+        preço = 0.55
     else:
-        valor_fatura = kilowatts_hora * 0.60
+        preço = 0.60
 else:
-    print ("O tipo de instalação informado está incorreto!")
-
-print ("O valor da fatura de é: R$%6.2f." % valor_fatura)
+    preço = 0
+    print("Erro ! Tipo de instalação desconhecido!")
+custo = consumo * preço
+print(f"Valor a pagar: R$ {custo:7.2f}")
